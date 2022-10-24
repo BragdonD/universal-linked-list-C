@@ -127,7 +127,8 @@ linkedList* linkedList_delete_head(linkedList* head, void*data) {
     linkedList *toreturn = NULL;
     if(head == NULL) return NULL;
     toreturn->next = head->next;
-    data = head->data;
+    if(data != NULL)
+        data = head->data;
     free(head);
     return toreturn;
 }
