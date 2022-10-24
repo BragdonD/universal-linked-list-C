@@ -133,12 +133,13 @@ linkedList* linkedList_delete_head(linkedList* head) {
 
 /// @brief Function to free a list recursively
 /// @param head the head pointer
-void linkedList_free(linkedList* head) {
+void linkedList_free(linkedList* head, void (*free_data)(void*)) {
     if(head == NULL) return;
-    linkedList_free(head->next);
+    linkedList_free(head->next, free_data);
+    if(free_data != NULL)
+        free_data(head->data);
     free(head);
 }
-
 /// @brief Function to create a list from an array of value
 /// @param arr The array
 /// @param len The length of the array
