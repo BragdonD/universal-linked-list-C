@@ -123,12 +123,10 @@ void* linkedList_delete_after(linkedList* head) {
 /// @brief Function to delete the head pointer of a list
 /// @param head the head pointer of the list
 /// @return the new head pointer of the list
-linkedList* linkedList_delete_head(linkedList* head, void*data) {
+linkedList* linkedList_delete_head(linkedList* head) {
     linkedList *toreturn = NULL;
     if(head == NULL) return NULL;
     toreturn->next = head->next;
-    if(data != NULL)
-        data = head->data;
     free(head);
     return toreturn;
 }
